@@ -2,7 +2,7 @@
 
 # Criado por: Matheus Percário Bruder
 
-# Exercício 01 
+# Exercicio 01
 # Escreva um programa que leia dois inteiros e determine se o primeiro é multiplo do segundo.
 
 a = int(input('Primeiro numero: '))
