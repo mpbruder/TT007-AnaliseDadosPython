@@ -20,10 +20,10 @@ while True:
         for i in num[::-1]:
             reverso += i
         if reverso != num:
-            print(f'NÃO! {num} e {reverso} não são palindromos')
+            print(f'NÃO! \'{num}\' e \'{reverso}\' não são palindromos')
             break
         else:
-            print(f'SIM! {num} e {reverso} são palindromos')
+            print(f'SIM! \'{num}\' e \'{reverso}\' são palindromos')
             break
         
         
