@@ -25,5 +25,3 @@ while True:
         else:
             print(f'SIM! \'{num}\' e \'{reverso}\' são palindromos')
             break
-        
-        
