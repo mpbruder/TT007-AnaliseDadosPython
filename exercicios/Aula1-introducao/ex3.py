@@ -8,20 +8,25 @@ Uma palindrome é um número ou um texto cuja leitura é a mesma tanto de frente
 Se o número não for de 5 dígitos, mostre um alerta ao usuário indicando o problema e permita que o usuário entre com um número correto após a emissão do alerta. Não deve ser usado vetores (array).
 """
 
+import math
+
 while True:
     num = input('Numero: ')
-    # print(type(num))
-    reverso = ''
-
     if len(num) != 5:
         print(f'Tente novamente, o numero \'{num}\' não possui 5 digitos!')
         continue
     else:
-        for i in num[::-1]:
-            reverso += i
-        if reverso != num:
-            print(f'NÃO! \'{num}\' e \'{reverso}\' não são palindromos')
+        num = int(num)
+        quinto = num % 10  # Pega quinto
+        num //= 10  # Retira o quinto
+        primeiro = num // 1000  # Pega primeiro
+        num %= 1000  # Retira primeiro
+        quarto = num % 10  # Pega quarto
+        segundo = num // 100  # Pega segundo
+
+        if (primeiro == quinto) and (segundo == quarto):
+            print(f'SIM! São palindromos')
             break
         else:
-            print(f'SIM! \'{num}\' e \'{reverso}\' são palindromos')
+            print(f'NÃO! Não são palindromos')
             break
