@@ -8,8 +8,6 @@ Uma palindrome é um número ou um texto cuja leitura é a mesma tanto de frente
 Se o número não for de 5 dígitos, mostre um alerta ao usuário indicando o problema e permita que o usuário entre com um número correto após a emissão do alerta. Não deve ser usado vetores (array).
 """
 
-import math
-
 while True:
     num = input('Numero: ')
     if len(num) != 5:
