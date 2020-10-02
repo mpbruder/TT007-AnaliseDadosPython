@@ -61,7 +61,7 @@ def game_tile():
 
 
 def pause():
-    time.sleep(1)
+    time.sleep(2)
 
 
 def inicio_jogo():
@@ -167,8 +167,7 @@ def aposta(who, p, p_name, old_bet):
             new_bet = [int(b1), int(b2)]
             if validar_aposta(old_bet, new_bet):
                 break
-    print(p[who][0] + ' apostou que existem ' + str(new_bet[0]) +
-          ' dados com valor [' + str(new_bet[1]) + '] na mesa.\n')
+    print(f'{p[who][0]} apostou que existem {str(new_bet[0])} dados com valor [{str(new_bet[1])}] na mesa.\n')
     pause()
     return new_bet
 
@@ -177,7 +176,8 @@ def escolha_humana():
     print(
         'Você gostaria de [a]postar, chamar o jogador anterior de [m]entiroso, ou [c]oncordar com o palpite do jogador anterior?')
     while True:
-        res = input(': ')
+        res = input(': ').strip().lower()
+        print()
         if res == 'a':
             return 0
         if res == 'm':
@@ -199,14 +199,14 @@ def escolha_npc():
 
 
 def mentiroso(who, p, old_bet):
-    print(f'\n{p[who][0]} acha que o jogador anterior está mentindo.\n')
+    print(f'{p[who][0]} acha que o jogador anterior está mentindo.\n')
     if contar_dados(p, old_bet[1]) >= old_bet[0]:
         p[who][1] -= 1
         print(
-            f'Errado! {p[who][0]} perdeu um dado, agora possui apenas {p[who][1]}.')
+            f'Errado! {p[who][0]} perdeu um dado, agora possui {p[who][1]} dados.')
     else:
         p[(who-1) % num_players][1] -= 1
-        print(f'Boa, {p[who][0]}! O jogador anterior perdeu um dado.')
+        print(f'Boa, {p[who][0]}! O jogador anterior perdeu um dado.\n')
     return p
 
 
@@ -217,11 +217,11 @@ def concordar(who, p, old_bet):
         for x in range(num_players):
             if x != who:
                 p[x][1] -= 1
-                print(f'{p[x][2]} tem agora apenas {p[x][1]} dados.')
+                print(f'{p[x][0]} tem agora apenas {p[x][1]} dados.')
     else:
         p[who][1] -= 1
         print(
-            f'Errado! {p[who][0]} perdeu um dado, agora possui apenas {p[who][1]}.')
+            f'Errado! {p[who][0]} perdeu um dado, agora possui {p[who][1]} dados.\n')
     pause()
     return p
 
@@ -232,9 +232,14 @@ def remover_player(inf_players):
     for p in range(num_players):
         if inf_players[p][1] == 0:
             max_players -= 1
-            print(inf_players[p][0] + ' está fora do jogo.\n')
+            print(f'\n{inf_players[p][0]} está fora do jogo...\n')
             pause()
-            losers.append(x)
+            losers.append(p)
+
+    # Remover perdedor da lista de jogadores
+    for x in range(len(losers)):
+        inf_players.pop(losers[x])
+    pause()
     return [inf_players, max_players]
 
 
@@ -265,7 +270,8 @@ while gameContinues:
     aposta_atual = [0, 6]
     if players[nextPlayer][0] == player_name:
         print(f'\nSua mão: {mostrar_dados(players[nextPlayer][2])}')
-        print(f'Existem {str(contar_dados(players))} outros dados na mesa.')
+        print(
+            f'Existem {str(dados_em_jogo(players) - players[nextPlayer][1])} outros dados na mesa.\n')
     print(
         f'{players[nextPlayer][0]} começa. Por favor, faça a primeira aposta.\n')
     aposta_atual = aposta(nextPlayer, players, player_name, aposta_atual)
@@ -305,5 +311,5 @@ while gameContinues:
     rm = []
 
     if num_players == 1:
-        status = False
+        gameContinues = False
         print(f'\n\nPARABÉNS! {players[nextPlayer][0]} ganhou o jogo.')
