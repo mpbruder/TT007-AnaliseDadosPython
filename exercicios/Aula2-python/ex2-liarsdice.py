@@ -92,7 +92,7 @@ def menu(*args):
     return opc
 
 
-def rolar_dados(inf_player):
+def rolar_dados(inf_player): # FOI
     inf_player[2] = [0, 0, 0, 0, 0]
 
     # Adicionar somente numero correto de dados
@@ -102,7 +102,7 @@ def rolar_dados(inf_player):
     return inf_player
 
 
-def iniciar_npc(n_players):
+def iniciar_npc(n_players): # FOI
     cpu_players = []
     for i in range(n_players):
         # pegar nome aleatório da lista de nomes
@@ -113,7 +113,7 @@ def iniciar_npc(n_players):
     return cpu_players
 
 
-def mostrar_dados(dice):
+def mostrar_dados(dice): # FOI
     string = ''
     for d in dice:
         if d == 0:
@@ -122,7 +122,7 @@ def mostrar_dados(dice):
     return string
 
 
-def validar_aposta(old_bet, new_bet):
+def validar_aposta(old_bet, new_bet): # FOI
     if old_bet[0] > new_bet[0] or (old_bet[0] == new_bet[0] and old_bet[1] >= new_bet[1]) or new_bet[0] > 24 or new_bet[1] > 6:
         return False
     else:
@@ -148,7 +148,7 @@ def dados_em_jogo(inf_players):
     return t
 
 
-def aposta(who, p, p_name, old_bet):
+def aposta(who, p, p_name, old_bet): # POLIMORFISMO E SOBREESCRITA == FOI
     new_bet = [0, 0]
     if p[who][0] == p_name:
         while True:
@@ -172,7 +172,7 @@ def aposta(who, p, p_name, old_bet):
     return new_bet
 
 
-def escolha_humana():
+def escolha_humana(): # POLIMORFISMO E SOBREESCRITA
     print(
         'Você gostaria de [a]postar, chamar o jogador anterior de [m]entiroso, ou [c]oncordar com o palpite do jogador anterior?')
     while True:
@@ -187,7 +187,7 @@ def escolha_humana():
         print('Escolha inválida. Escolha entre as letras: a, m, ou c.')
 
 
-def escolha_npc():
+def escolha_npc(): # POLIMORFISMO E SOBREESCRITA
     r = random.randrange(0, 3)
     if r == 0:
         return 0
