@@ -129,7 +129,7 @@ def validar_aposta(old_bet, new_bet): # FOI
         return True
 
 
-def contar_dados(p, valor):
+def contar_dados(p, valor): # FOI
     total = 0
     for x in range(num_players):
         d = p[x][2].count(valor)
@@ -141,7 +141,7 @@ def contar_dados(p, valor):
     return total
 
 
-def dados_em_jogo(inf_players):
+def dados_em_jogo(inf_players): # FOI
     t = 0
     for p in inf_players:
         t += p[1]
@@ -172,7 +172,7 @@ def aposta(who, p, p_name, old_bet): # POLIMORFISMO E SOBREESCRITA == FOI
     return new_bet
 
 
-def escolha_humana(): # POLIMORFISMO E SOBREESCRITA
+def escolha_humana(): # POLIMORFISMO E SOBREESCRITA == FOI
     print(
         'Você gostaria de [a]postar, chamar o jogador anterior de [m]entiroso, ou [c]oncordar com o palpite do jogador anterior?')
     while True:
@@ -187,7 +187,7 @@ def escolha_humana(): # POLIMORFISMO E SOBREESCRITA
         print('Escolha inválida. Escolha entre as letras: a, m, ou c.')
 
 
-def escolha_npc(): # POLIMORFISMO E SOBREESCRITA
+def escolha_npc(): # POLIMORFISMO E SOBREESCRITA == FOI
     r = random.randrange(0, 3)
     if r == 0:
         return 0
@@ -198,7 +198,7 @@ def escolha_npc(): # POLIMORFISMO E SOBREESCRITA
     pass
 
 
-def mentiroso(who, p, old_bet):
+def mentiroso(who, p, old_bet): # FOI
     print(f'{p[who][0]} acha que o jogador anterior está mentindo.\n')
     if contar_dados(p, old_bet[1]) >= old_bet[0]:
         p[who][1] -= 1
