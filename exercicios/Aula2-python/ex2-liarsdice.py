@@ -210,7 +210,7 @@ def mentiroso(who, p, old_bet): # FOI
     return p
 
 
-def concordar(who, p, old_bet):
+def concordar(who, p, old_bet): # FOI
     print(f'{p[who][0]} acha que o jogador anterior está falando a verdade.\n')
     if contar_dados(p, old_bet[1]) == old_bet[0]:
         print(f'Boa, {p[who][0]}! Todo mundo perdeu um dado.\n')
