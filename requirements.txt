@@ -1,6 +1,7 @@
 argon2-cffi==20.1.0
 async-generator==1.10
 attrs==20.2.0
+autopep8==1.5.4
 backcall==0.2.0
 bleach==3.2.1
 certifi==2020.6.20
@@ -11,6 +12,7 @@ decorator==4.4.2
 defusedxml==0.6.0
 entrypoints==0.3
 ipykernel==5.3.4
+ipympl==0.5.8
 ipython==7.18.1
 ipython-genutils==0.2.0
 ipywidgets==7.5.1
@@ -40,13 +42,14 @@ pickleshare==0.7.5
 Pillow==7.2.0
 prometheus-client==0.8.0
 prompt-toolkit==3.0.7
+pycodestyle==2.6.0
 pycparser==2.20
 Pygments==2.7.1
 pyparsing==2.4.7
 pyrsistent==0.17.3
 python-dateutil==2.8.1
 pytz==2020.1
-#pywin32==228
+pywin32==228
 pywinpty==0.5.7
 pyzmq==19.0.2
 qtconsole==4.7.7
@@ -57,6 +60,7 @@ Send2Trash==1.5.0
 six==1.15.0
 terminado==0.9.1
 testpath==0.4.4
+toml==0.10.1
 tornado==6.0.4
 traitlets==5.0.4
 wcwidth==0.2.5
